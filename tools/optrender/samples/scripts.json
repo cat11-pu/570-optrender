@@ -1,0 +1,404 @@
+{
+  "scripts": [
+    {
+      "id": "epub-to-daisy",
+      "nicename": "EPUB to DAISY 2.02",
+      "version": "2.5.0",
+      "href": "http://pipeline.example.org/ws/scripts/epub-to-daisy",
+      "description": "Converts an EPUB 3 publication to a DAISY 2.02 talking book.",
+      "inputs": [
+        {
+          "name": "source",
+          "nicename": "Source EPUB",
+          "short": "s",
+          "required": true,
+          "sequence": false,
+          "mediatype": "application/epub+zip",
+          "desc": "EPUB 3 publication to convert."
+        }
+      ],
+      "options": [
+        {
+          "name": "output-format",
+          "nicename": "Output format",
+          "short": "o",
+          "desc": "Format of the generated DAISY book.",
+          "type": {"kind": "choice", "values": ["daisy202", "daisy3"]},
+          "default": "daisy202",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "audio-quality",
+          "nicename": "Audio quality",
+          "short": "a",
+          "desc": "Bitrate of the synthesized audio.",
+          "type": {"kind": "choice", "values": ["low", "medium", "high"]},
+          "default": "medium",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "skip-content",
+          "nicename": "Skip content",
+          "short": "k",
+          "desc": "Do not convert the publication content.",
+          "type": {"kind": "boolean"},
+          "default": "false",
+          "required": false,
+          "sequence": false
+        }
+      ]
+    },
+    {
+      "id": "dtbook-to-epub3",
+      "nicename": "DTBook to EPUB 3",
+      "version": "2.5.0",
+      "href": "http://pipeline.example.org/ws/scripts/dtbook-to-epub3",
+      "description": "Converts a DTBook file to an EPUB 3 publication.",
+      "inputs": [
+        {
+          "name": "source",
+          "nicename": "DTBook file",
+          "short": "s",
+          "required": true,
+          "sequence": false,
+          "mediatype": "application/x-dtbook+xml",
+          "desc": "DTBook file to convert."
+        }
+      ],
+      "options": [
+        {
+          "name": "3d-effects",
+          "nicename": "3D effects",
+          "short": "e",
+          "desc": "Render the illustrations as 3D models.",
+          "type": {"kind": "string"},
+          "default": "",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "output-file-name",
+          "nicename": "Output file name",
+          "short": "f",
+          "desc": "Name of the generated file.",
+          "type": {"kind": "pattern", "pattern": "[A-Za-z0-9._-]+"},
+          "default": "",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "mathml",
+          "nicename": "MathML",
+          "short": "a",
+          "desc": "How to handle MathML content.",
+          "type": {"kind": "choice", "values": ["none", "fallback", "render"]},
+          "default": "none",
+          "required": false,
+          "sequence": false
+        }
+      ]
+    },
+    {
+      "id": "zedai-to-epub3",
+      "nicename": "ZedAI to EPUB 3",
+      "version": "2.5.0",
+      "href": "http://pipeline.example.org/ws/scripts/zedai-to-epub3",
+      "description": "Converts a ZedAI document to an EPUB 3 publication.",
+      "inputs": [
+        {
+          "name": "source",
+          "nicename": "ZedAI file",
+          "short": "s",
+          "required": true,
+          "sequence": false,
+          "mediatype": "application/z3998-auth+xml",
+          "desc": "ZedAI file to convert."
+        }
+      ],
+      "options": [
+        {
+          "name": "media",
+          "nicename": "Media",
+          "short": "m",
+          "desc": "Media types of the generated publication.",
+          "type": {"kind": "choice", "values": ["speech", "embossed", "braille", "text", "electronic", "print", "handwriting", "projection", "microform", "none"]},
+          "default": "speech",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "sdh",
+          "nicename": "Subtitles",
+          "short": "d",
+          "desc": "Subtitle track to embed.",
+          "type": {"kind": "choice", "values": []},
+          "default": "",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "toc-depth",
+          "nicename": "TOC depth",
+          "short": "t",
+          "desc": "Depth of the generated table of contents.",
+          "type": {"kind": "nonnegative-integer", "min": 0, "max": 6},
+          "default": "2",
+          "required": true,
+          "sequence": false
+        }
+      ]
+    },
+    {
+      "id": "dtbook-to-daisy3",
+      "nicename": "DTBook to DAISY 3",
+      "version": "2.5.0",
+      "href": "http://pipeline.example.org/ws/scripts/dtbook-to-daisy3",
+      "description": "Converts a DTBook file to a DAISY 3 publication.",
+      "inputs": [
+        {
+          "name": "source",
+          "nicename": "DTBook file",
+          "short": "s",
+          "required": true,
+          "sequence": false,
+          "mediatype": "application/x-dtbook+xml",
+          "desc": "DTBook file to convert."
+        }
+      ],
+      "options": [
+        {
+          "name": "output-format",
+          "nicename": "Output format",
+          "short": "f",
+          "desc": "Format of the generated DAISY book.",
+          "type": {"kind": "choice", "values": ["daisy202", "daisy3"]},
+          "default": "daisy202",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "frames-per-second",
+          "nicename": "Frames per second",
+          "short": "c",
+          "desc": "Number of audio frames per second.",
+          "type": {"kind": "integer", "min": 1, "max": 60},
+          "default": "25",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "page-prefix",
+          "nicename": "Page prefix",
+          "short": "y",
+          "desc": "Literal string prepended to every generated page.",
+          "type": {"kind": "string"},
+          "default": "<a&b>",
+          "required": false,
+          "sequence": false
+        }
+      ]
+    },
+    {
+      "id": "html-to-pef",
+      "nicename": "HTML to PEF",
+      "version": "2.5.0",
+      "href": "http://pipeline.example.org/ws/scripts/html-to-pef",
+      "description": "Converts an HTML file to a PEF braille file.",
+      "inputs": [
+        {
+          "name": "source",
+          "nicename": "HTML file",
+          "short": "s",
+          "required": true,
+          "sequence": false,
+          "mediatype": "application/xhtml+xml",
+          "desc": "HTML file to convert."
+        }
+      ],
+      "options": [
+        {
+          "name": "merge-pages",
+          "nicename": "Merge pages",
+          "short": "m",
+          "desc": "Merge the pages before embossing.",
+          "type": {"kind": "boolean"},
+          "default": "yes",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "page-width",
+          "nicename": "Page width",
+          "short": "w",
+          "desc": "Width of a braille page in cells.",
+          "type": {"kind": "nonnegative-integer", "min": 10, "max": 200},
+          "default": "100",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "nicename",
+          "nicename": "Nice name",
+          "short": "g",
+          "desc": "Nice name written into the PEF metadata.",
+          "type": {"kind": "string"},
+          "default": "",
+          "required": false,
+          "sequence": false
+        }
+      ]
+    },
+    {
+      "id": "epub3-to-pef",
+      "nicename": "EPUB 3 to PEF",
+      "version": "2.5.0",
+      "href": "http://pipeline.example.org/ws/scripts/epub3-to-pef",
+      "description": "Converts an EPUB 3 publication to a PEF braille file.",
+      "inputs": [
+        {
+          "name": "source",
+          "nicename": "Source EPUB",
+          "short": "s",
+          "required": true,
+          "sequence": false,
+          "mediatype": "application/epub+zip",
+          "desc": "EPUB 3 publication to convert."
+        }
+      ],
+      "options": [
+        {
+          "name": "toc-levels",
+          "nicename": "TOC levels",
+          "short": "t",
+          "desc": "Levels of the table of contents to emboss.",
+          "type": {"kind": "boolean"},
+          "default": "",
+          "required": false,
+          "sequence": true
+        },
+        {
+          "name": "page-ranges",
+          "nicename": "Page ranges",
+          "short": "g",
+          "desc": "Ranges of pages to emboss.",
+          "type": {"kind": "string"},
+          "default": "1-5",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "hyphenate",
+          "nicename": "Hyphenate",
+          "short": "h",
+          "desc": "Hyphenate the words that do not fit on a line.",
+          "type": {"kind": "boolean"},
+          "default": "true",
+          "required": false,
+          "sequence": false
+        }
+      ]
+    },
+    {
+      "id": "dtbook-to-pef",
+      "nicename": "DTBook to PEF",
+      "version": "2.5.0",
+      "href": "http://pipeline.example.org/ws/scripts/dtbook-to-pef",
+      "description": "Converts a DTBook file to a PEF braille file.",
+      "inputs": [
+        {
+          "name": "source",
+          "nicename": "DTBook file",
+          "short": "s",
+          "required": true,
+          "sequence": false,
+          "mediatype": "application/x-dtbook+xml",
+          "desc": "DTBook file to convert."
+        }
+      ],
+      "options": [
+        {
+          "name": "embossed",
+          "nicename": "Embossed",
+          "short": "e",
+          "desc": "Emboss the whole publication.",
+          "type": {"kind": "boolean"},
+          "default": "false",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "embossed",
+          "nicename": "Embossed",
+          "short": "t",
+          "desc": "Emboss a selection of the publication.",
+          "type": {"kind": "choice", "values": ["off", "on"]},
+          "default": "off",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "embossed",
+          "nicename": "Embossed",
+          "short": "u",
+          "desc": "Emboss the publication without hyphenating.",
+          "type": {"kind": "string"},
+          "default": "",
+          "required": false,
+          "sequence": false
+        }
+      ]
+    },
+    {
+      "id": "epub3-to-epub3",
+      "nicename": "EPUB 3 to EPUB 3",
+      "version": "2.5.0",
+      "href": "http://pipeline.example.org/ws/scripts/epub3-to-epub3",
+      "description": "Transforms an EPUB 3 publication into another EPUB 3 publication.",
+      "inputs": [
+        {
+          "name": "source",
+          "nicename": "Source EPUB",
+          "short": "s",
+          "required": true,
+          "sequence": false,
+          "mediatype": "application/epub+zip",
+          "desc": "EPUB 3 publication to transform."
+        }
+      ],
+      "options": [
+        {
+          "name": "timeout",
+          "nicename": "Timeout",
+          "short": "t",
+          "desc": "How long to wait for the remote resources.",
+          "type": {"kind": "duration"},
+          "default": "",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "profile",
+          "nicename": "Profile",
+          "short": "g",
+          "desc": "Accessibility profile of the generated publication.",
+          "type": {"kind": "choice", "values": ["full", "accessibility"]},
+          "default": "full",
+          "required": false,
+          "sequence": false
+        },
+        {
+          "name": "decompose",
+          "nicename": "Decompose",
+          "short": "c",
+          "desc": "Decompose the compound words before synthesizing.",
+          "type": {"kind": "boolean"},
+          "default": "true",
+          "required": false,
+          "sequence": false
+        }
+      ]
+    }
+  ]
+}
